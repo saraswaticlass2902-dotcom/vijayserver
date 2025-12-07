@@ -1,1 +1,0 @@
-# next-investment-backend

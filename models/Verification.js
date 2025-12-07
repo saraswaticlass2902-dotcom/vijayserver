@@ -1,0 +1,16 @@
+// models/Verification.js
+const mongoose = require("mongoose");
+
+const verificationSchema = new mongoose.Schema({
+  email: { type: String, required: true, lowercase: true, trim: true, index: true },
+  otpHash: { type: String, required: true },
+  otpToken: { type: String, required: true, unique: true },
+  purpose: { type: String, enum: ["register", "forgot"], required: true },
+  verified: { type: Boolean, default: false },
+  attempts: { type: Number, default: 0 },
+  createdAt: { type: Date, default: Date.now, index: { expires: 600 } }, // TTL ~10 min
+  expiresAt: { type: Date, required: true },
+});
+
+module.exports = mongoose.model("Verification", verificationSchema);
+
