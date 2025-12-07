@@ -1,3 +1,5 @@
-#.gitignore
 node_modules/
 .env
+uploads/       # optional: local uploads should not be pushed / kept persistent
+.DS_Store
+npm-debug.log
